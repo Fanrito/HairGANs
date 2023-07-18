@@ -8,10 +8,10 @@ def parse_args():
     parser = argparse.ArgumentParser(description=desc)
 
     parser.add_argument('--train_dir', type=str,
-                        default='../TrainData_Ori/',
+                        default='./TrainData_Ori/',
                         help='dir of training data.')
     parser.add_argument('--test_dir', type=str,
-                        default='../TestData_Ori/',
+                        default='./TestData_Ori/',
                         help='dir of testing data.')
     parser.add_argument('--If_train', type=bool,
                         default=False,
@@ -20,10 +20,10 @@ def parse_args():
                         default=4,
                         help='Batch size set for training process.')
     parser.add_argument('--rst_dir', type=str,
-                        default='../rstData_LossComb/',
+                        default='./rstData_LossComb/',
                         help='dir to save result.')
     parser.add_argument('--In_dir', type=str,
-                        default='../Hairs/combine/comb_2/',
+                        default='./Hairs/combine/comb_2/',
                         help='dir of Input data not for training.')
     args = parser.parse_args()
 
@@ -32,6 +32,10 @@ def parse_args():
 
 def main():
     args = parse_args()
+
+    # My setting...
+    # args.If_train = True
+    args.batchSize = 2
 
     run_config = tf.ConfigProto()
     run_config.gpu_options.allow_growth = True
